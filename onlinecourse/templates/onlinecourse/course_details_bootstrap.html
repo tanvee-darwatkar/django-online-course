@@ -5,6 +5,7 @@
     <h2>{{ course.name }}</h2>
     <p>{{ course.description }}</p>
 
+    <!-- Lessons Accordion -->
     <div class="accordion" id="lessonAccordion">
         {% for lesson in course.lesson_set.all %}
             <div class="card">
@@ -24,6 +25,7 @@
         {% endfor %}
     </div>
 
+    <!-- Exam Section -->
     {% if user.is_authenticated %}
         <div class="card mt-4">
             <div class="card-header">
