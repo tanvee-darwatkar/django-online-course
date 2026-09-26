@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    {% if grade >= 70 %}
+        <div class="alert alert-success">
+            <strong>Congratulations!</strong> You passed the exam with a score of {{ grade }} / {{ total_score }}.
+        </div>
+    {% else %}
+        <div class="alert alert-danger">
+            <strong>Failed.</strong> You scored {{ grade }} / {{ total_score }}. Please try again.
+        </div>
+    {% endif %}
+</div>

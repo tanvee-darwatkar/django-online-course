@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <h2>{{ course.name }}</h2>
+    <p>{{ course.description }}</p>
+
+    {% if user.is_authenticated %}
+        <form id="question-form" action="{% url 'onlinecourse:submit' course.id %}" method="post">
+            {% csrf_token %}
+            {% for question in course.question_set.all %}
+            <div class="card mt-1">
+                <div class="card-header"><h5>{{ question.question_text }}</h5></div>
+                <div class="card-body">
+                    {% for choice in question.choice_set.all %}
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="choice" class="form-check-input" value="{{ choice.id }}">
+                            {{ choice.choice_text }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+            <input class="btn btn-primary btn-block mt-4" type="submit" value="Submit Exam">
+        </form>
+    {% endif %}
+</div>
